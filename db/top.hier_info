@@ -1,0 +1,37 @@
+|top
+clk => ~NO_FANOUT~
+sys_rst => ~NO_FANOUT~
+din[0] => ~NO_FANOUT~
+din[1] => ~NO_FANOUT~
+din[2] => ~NO_FANOUT~
+din[3] => ~NO_FANOUT~
+din[4] => ~NO_FANOUT~
+din[5] => ~NO_FANOUT~
+din[6] => ~NO_FANOUT~
+din[7] => ~NO_FANOUT~
+din[8] => ~NO_FANOUT~
+din[9] => ~NO_FANOUT~
+din[10] => ~NO_FANOUT~
+din[11] => ~NO_FANOUT~
+din[12] => ~NO_FANOUT~
+din[13] => ~NO_FANOUT~
+din[14] => ~NO_FANOUT~
+din[15] => ~NO_FANOUT~
+dout[0] << <GND>
+dout[1] << <GND>
+dout[2] << <GND>
+dout[3] << <GND>
+dout[4] << <GND>
+dout[5] << <GND>
+dout[6] << <GND>
+dout[7] << <GND>
+dout[8] << <GND>
+dout[9] << <GND>
+dout[10] << <GND>
+dout[11] << <GND>
+dout[12] << <GND>
+dout[13] << <GND>
+dout[14] << <GND>
+dout[15] << <GND>
+
+
