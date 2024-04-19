@@ -9,46 +9,46 @@ z2
 cModel Technology
 Z0 dD:/Udemy_Processor_Course/verilog_code/simulation/modelsim
 vtb
-Z1 !s110 1713518473
+!s110 1713526039
 !i10b 1
-!s100 z:f[<XI:lzmUGme1<;?G_1
-Ice@j[IkFW;VBC^]d<Ekn_2
-Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s100 k:NZa>PJB<7NzKz[Qe_D43
+I<O;4Z1Q9zC]5eR8X8gB=d3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1713518273
+w1713525971
 8D:/Udemy_Processor_Course/verilog_code/tb.v
 FD:/Udemy_Processor_Course/verilog_code/tb.v
 L0 21
-Z3 OV;L;10.5b;63
+Z2 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z4 !s108 1713518473.000000
+!s108 1713526039.000000
 !s107 D:/Udemy_Processor_Course/verilog_code/tb.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Udemy_Processor_Course/verilog_code|D:/Udemy_Processor_Course/verilog_code/tb.v|
 !i113 1
-Z5 o-vlog01compat -work work
-Z6 !s92 -vlog01compat -work work +incdir+D:/Udemy_Processor_Course/verilog_code
-Z7 tCvgOpt 0
+Z3 o-vlog01compat -work work
+Z4 !s92 -vlog01compat -work work +incdir+D:/Udemy_Processor_Course/verilog_code
+Z5 tCvgOpt 0
 vtop
-R1
+!s110 1713526038
 !i10b 1
 !s100 J<b1NL[J2[`S_;6[6lk2e3
 ImRkRjl7L5V;0>oOVUlVIR2
-R2
+R1
 R0
 w1713518169
 8D:/Udemy_Processor_Course/verilog_code/top.v
 FD:/Udemy_Processor_Course/verilog_code/top.v
 L0 22
-R3
+R2
 r1
 !s85 0
 31
-R4
+!s108 1713526038.000000
 !s107 D:/Udemy_Processor_Course/verilog_code/top.v|
 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/Udemy_Processor_Course/verilog_code|D:/Udemy_Processor_Course/verilog_code/top.v|
 !i113 1
+R3
+R4
 R5
-R6
-R7

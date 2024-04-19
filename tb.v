@@ -77,6 +77,35 @@ dut.`rsrc1 = 7;//gpr[7]
 #10;
 $display("OP:MOV Rdst:%0d  Rsrc1:%0d",dut.GPR[4],dut.GPR[7] );
 $display("-----------------------------------------------------------------");
+
+//////// immediate mul op
+$display("-----------------------------------------------------------------");
+dut.IR = 0;
+dut.`imm_mode = 1;
+dut.`oper_type = 4;
+dut.`rsrc1 = 2;///gpr[2] = 2
+dut.`rdst  = 0;///gpr[0]
+dut.`isrc = 4;
+#10;
+$display("OP:MUI Rsrc1:%0d  Rsrc2:%0d RdstLSB:%0d RdstMSB:%0d",dut.GPR[2], dut.`isrc, dut.GPR[0],dut.SGPR);
+$display("-----------------------------------------------------------------");
+////////////register mul op
+dut.IR = 0;
+dut.`imm_mode = 0;
+dut.`oper_type = 4;
+dut.`rsrc1 = 0;///gpr[0] = 8
+dut.`rsrc2 = 1;///gpr[1] = 2
+dut.`rdst  = 2;///gpr[2]
+#10;
+//////////////////mov sgpr
+dut.IR = 0;
+dut.`imm_mode = 0;
+dut.`oper_type = 0;
+dut.`rdst = 3;///gpr[3]
+#10;
+
+$display("OP:MUL Rsrc1:%0d  Rsrc2:%0d RdstLSB:%0d RdstMSB:%0d",dut.GPR[0], dut.GPR[1], dut.GPR[2], dut.GPR[3] );
+$display("-----------------------------------------------------------------");
  
  
 end
