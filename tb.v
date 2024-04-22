@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
  
 ///////////fields of IR
+
 `define oper_type IR[31:27]
 `define rdst      IR[26:22]
 `define rsrc1     IR[21:17]
@@ -10,11 +11,22 @@
  
  
 ////////////////arithmetic operation
+
 `define movsgpr        5'b00000
 `define mov            5'b00001
 `define add            5'b00010
 `define sub            5'b00011
 `define mul            5'b00100
+
+////////////////logical operations : and or xor xnor nand nor not
+ 
+`define ror            5'b00101
+`define rand           5'b00110
+`define rxor           5'b00111
+`define rxnor          5'b01000
+`define rnand          5'b01001
+`define rnor           5'b01010
+`define rnot           5'b01011 
 
 
 
@@ -36,6 +48,7 @@ end
  
  
 initial begin
+
 //////// immediate add op
 $display("-----------------------------------------------------------------");
 dut.IR = 0;
@@ -47,6 +60,7 @@ dut.`isrc = 4;
 #10;
 $display("OP:ADI Rsrc1:%0d  Rsrc2:%0d Rdst:%0d",dut.GPR[2], dut.`isrc, dut.GPR[0]);
 $display("-----------------------------------------------------------------");
+
 ////////////register add op
 dut.IR = 0;
 dut.`imm_mode = 0;
@@ -89,6 +103,7 @@ dut.`isrc = 4;
 #10;
 $display("OP:MUI Rsrc1:%0d  Rsrc2:%0d RdstLSB:%0d RdstMSB:%0d",dut.GPR[2], dut.`isrc, dut.GPR[0],dut.SGPR);
 $display("-----------------------------------------------------------------");
+
 ////////////register mul op
 dut.IR = 0;
 dut.`imm_mode = 0;
@@ -97,7 +112,9 @@ dut.`rsrc1 = 0;///gpr[0] = 8
 dut.`rsrc2 = 1;///gpr[1] = 2
 dut.`rdst  = 2;///gpr[2]
 #10;
+
 //////////////////mov sgpr
+
 dut.IR = 0;
 dut.`imm_mode = 0;
 dut.`oper_type = 0;
@@ -105,6 +122,28 @@ dut.`rdst = 3;///gpr[3]
 #10;
 
 $display("OP:MUL Rsrc1:%0d  Rsrc2:%0d RdstLSB:%0d RdstMSB:%0d",dut.GPR[0], dut.GPR[1], dut.GPR[2], dut.GPR[3] );
+$display("-----------------------------------------------------------------");
+
+//////////////////////logical and imm
+dut.IR = 0;
+dut.`imm_mode = 1;
+dut.`oper_type = 6;
+dut.`rdst = 4;
+dut.`rsrc1 = 7;//gpr[7]
+dut.`isrc = 56;
+#10;
+$display("OP:ANDI Rdst:%8b  Rsrc1:%8b imm_d :%8b",dut.GPR[4],dut.GPR[7],dut.`isrc );
+$display("-----------------------------------------------------------------");
+ 
+///////////////////logical or imm
+dut.IR = 0;
+dut.`imm_mode = 1;
+dut.`oper_type = 7;
+dut.`rdst = 4;
+dut.`rsrc1 = 7;//gpr[7]
+dut.`isrc = 56;
+#10;
+$display("OP:XORI Rdst:%8b  Rsrc1:%8b imm_d :%8b",dut.GPR[4],dut.GPR[7],dut.`isrc );
 $display("-----------------------------------------------------------------");
  
  

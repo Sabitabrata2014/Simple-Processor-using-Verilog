@@ -1,5 +1,5 @@
 Analysis & Elaboration report for top
-Fri Apr 19 16:56:25 2024
+Mon Apr 22 15:13:33 2024
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                                   ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status      ; Successful - Fri Apr 19 16:56:25 2024       ;
+; Analysis & Elaboration Status      ; Successful - Mon Apr 22 15:13:33 2024       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; top                                         ;
 ; Top-level Entity Name              ; top                                         ;
@@ -163,28 +163,28 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Fri Apr 19 16:56:14 2024
+    Info: Processing started: Mon Apr 22 15:13:23 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off top -c top --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file top.v
-    Info (12023): Found entity 1: top File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 22
+    Info (12023): Found entity 1: top File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 30
 Info (12021): Found 1 design units, including 1 entities, in source file tb.v
-    Info (12023): Found entity 1: tb File: D:/Udemy_Processor_Course/verilog_code/tb.v Line: 21
-Warning (10236): Verilog HDL Implicit Net warning at tb.v(26): created implicit net for "clk" File: D:/Udemy_Processor_Course/verilog_code/tb.v Line: 26
-Warning (10236): Verilog HDL Implicit Net warning at tb.v(26): created implicit net for "sys_rst" File: D:/Udemy_Processor_Course/verilog_code/tb.v Line: 26
-Warning (10236): Verilog HDL Implicit Net warning at tb.v(26): created implicit net for "din" File: D:/Udemy_Processor_Course/verilog_code/tb.v Line: 26
-Warning (10236): Verilog HDL Implicit Net warning at tb.v(26): created implicit net for "dout" File: D:/Udemy_Processor_Course/verilog_code/tb.v Line: 26
+    Info (12023): Found entity 1: tb File: D:/Udemy_Processor_Course/verilog_code/tb.v Line: 33
+Warning (10236): Verilog HDL Implicit Net warning at tb.v(38): created implicit net for "clk" File: D:/Udemy_Processor_Course/verilog_code/tb.v Line: 38
+Warning (10236): Verilog HDL Implicit Net warning at tb.v(38): created implicit net for "sys_rst" File: D:/Udemy_Processor_Course/verilog_code/tb.v Line: 38
+Warning (10236): Verilog HDL Implicit Net warning at tb.v(38): created implicit net for "din" File: D:/Udemy_Processor_Course/verilog_code/tb.v Line: 38
+Warning (10236): Verilog HDL Implicit Net warning at tb.v(38): created implicit net for "dout" File: D:/Udemy_Processor_Course/verilog_code/tb.v Line: 38
 Info (12127): Elaborating entity "top" for the top level hierarchy
-Warning (10858): Verilog HDL warning at top.v(33): object IR used but never assigned File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 33
-Warning (10270): Verilog HDL Case Statement warning at top.v(49): incomplete case statement has no default case item File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 49
-Warning (10240): Verilog HDL Always Construct warning at top.v(49): inferring latch(es) for variable "mul_res", which holds its previous value in one or more paths through the always construct File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 49
-Warning (10240): Verilog HDL Always Construct warning at top.v(49): inferring latch(es) for variable "SGPR", which holds its previous value in one or more paths through the always construct File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 49
-Warning (10034): Output port "dout" at top.v(26) has no driver File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 26
+Warning (10858): Verilog HDL warning at top.v(41): object IR used but never assigned File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 41
+Warning (10270): Verilog HDL Case Statement warning at top.v(57): incomplete case statement has no default case item File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 57
+Warning (10240): Verilog HDL Always Construct warning at top.v(57): inferring latch(es) for variable "mul_res", which holds its previous value in one or more paths through the always construct File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 57
+Warning (10240): Verilog HDL Always Construct warning at top.v(57): inferring latch(es) for variable "SGPR", which holds its previous value in one or more paths through the always construct File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 57
+Warning (10034): Output port "dout" at top.v(34) has no driver File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 34
 Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 10 warnings
     Info: Peak virtual memory: 4709 megabytes
-    Info: Processing ended: Fri Apr 19 16:56:25 2024
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:12
+    Info: Processing ended: Mon Apr 22 15:13:33 2024
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:11
 
 

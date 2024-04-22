@@ -16,7 +16,15 @@
 `define sub            5'b00011
 `define mul            5'b00100
  
+////////////////logical operations : and or xor xnor nand nor not
  
+`define ror            5'b00101
+`define rand           5'b00110
+`define rxor           5'b00111
+`define rxnor          5'b01000
+`define rnand          5'b01001
+`define rnor           5'b01010
+`define rnot           5'b01011 
  
  
 module top(
@@ -91,8 +99,73 @@ end
      GPR[`rdst]   =  mul_res[15:0];
      SGPR         =  mul_res[31:16];
 end
+
+
+///////////////////////////////////////////////////////////// bitwise or
+ 
+`ror : begin
+      if(`imm_mode)
+        GPR[`rdst]  = GPR[`rsrc1] | `isrc;
+     else
+       GPR[`rdst]   = GPR[`rsrc1] | GPR[`rsrc2];
+end
+ 
+////////////////////////////////////////////////////////////bitwise and
+ 
+`rand : begin
+      if(`imm_mode)
+        GPR[`rdst]  = GPR[`rsrc1] & `isrc;
+     else
+       GPR[`rdst]   = GPR[`rsrc1] & GPR[`rsrc2];
+end
+ 
+//////////////////////////////////////////////////////////// bitwise xor
+ 
+`rxor : begin
+      if(`imm_mode)
+        GPR[`rdst]  = GPR[`rsrc1] ^ `isrc;
+     else
+       GPR[`rdst]   = GPR[`rsrc1] ^ GPR[`rsrc2];
+end
+ 
+//////////////////////////////////////////////////////////// bitwise xnor
+ 
+`rxnor : begin
+      if(`imm_mode)
+        GPR[`rdst]  = GPR[`rsrc1] ~^ `isrc;
+     else
+        GPR[`rdst]   = GPR[`rsrc1] ~^ GPR[`rsrc2];
+end
+ 
+//////////////////////////////////////////////////////////// bitwisw nand
+ 
+`rnand : begin
+      if(`imm_mode)
+        GPR[`rdst]  = ~(GPR[`rsrc1] & `isrc);
+     else
+       GPR[`rdst]   = ~(GPR[`rsrc1] & GPR[`rsrc2]);
+end
+ 
+////////////////////////////////////////////////////////////bitwise nor
+ 
+`rnor : begin
+      if(`imm_mode)
+        GPR[`rdst]  = ~(GPR[`rsrc1] | `isrc);
+     else
+       GPR[`rdst]   = ~(GPR[`rsrc1] | GPR[`rsrc2]);
+end
+ 
+////////////////////////////////////////////////////////////not
+ 
+`rnot : begin
+      if(`imm_mode)
+        GPR[`rdst]  = ~(`isrc);
+     else
+        GPR[`rdst]   = ~(GPR[`rsrc1]);
+end
  
 /////////////////////////////////////////////////////////////
+
 endcase
 end
 endmodule
