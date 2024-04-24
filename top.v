@@ -168,6 +168,73 @@ end
 
 endcase
 end
+
+
+
+
+///////////////////////logic for condition flag
+reg sign = 0, zero = 0, overflow = 0, carry = 0;
+reg [16:0] temp_sum;
+ 
+always@(*)
+begin
+ 
+/////////////////sign bit
+if(`oper_type == `mul)
+  sign = SGPR[15];
+else
+  sign = GPR[`rdst][15];
+ 
+////////////////carry bit
+ 
+if(`oper_type == `add)
+   begin
+      if(`imm_mode)
+         begin
+         temp_sum = GPR[`rsrc1] + `isrc;
+         carry    = temp_sum[16]; 
+         end
+      else
+         begin
+         temp_sum = GPR[`rsrc1] + GPR[`rsrc2];
+         carry    = temp_sum[16]; 
+         end   end
+   else
+    begin
+        carry  = 1'b0;
+    end
+ 
+///////////////////// zero bit
+if(`oper_type == `mul)
+  zero =  ~((|SGPR[15:0]) | (|GPR[`rdst]));
+else
+  zero =  ~(|GPR[`rdst]); 
+ 
+ 
+//////////////////////overflow bit
+ 
+if(`oper_type == `add)
+     begin
+       if(`imm_mode)
+         overflow = ( (~GPR[`rsrc1][15] & ~IR[15] & GPR[`rdst][15] ) | (GPR[`rsrc1][15] & IR[15] & ~GPR[`rdst][15]) );
+       else
+         overflow = ( (~GPR[`rsrc1][15] & ~GPR[`rsrc2][15] & GPR[`rdst][15]) | (GPR[`rsrc1][15] & GPR[`rsrc2][15] & ~GPR[`rdst][15]));
+     end
+  else if(`oper_type == `sub)
+    begin
+       if(`imm_mode)
+         overflow = ( (~GPR[`rsrc1][15] & IR[15] & GPR[`rdst][15] ) | (GPR[`rsrc1][15] & ~IR[15] & ~GPR[`rdst][15]) );
+       else
+         overflow = ( (~GPR[`rsrc1][15] & GPR[`rsrc2][15] & GPR[`rdst][15]) | (GPR[`rsrc1][15] & ~GPR[`rsrc2][15] & ~GPR[`rdst][15]));
+    end 
+  else
+     begin
+     overflow = 1'b0;
+     end
+ 
+end
+
+
 endmodule
  
 ////////////////////////////////////////////////////////////////////////////

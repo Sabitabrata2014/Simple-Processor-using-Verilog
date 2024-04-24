@@ -177,6 +177,46 @@ dut.`rdst  = 0;
 #10;
 $display("OP:NOT Rsrc1:%16b  Rdst:%16b",dut.GPR[6], dut.GPR[0] );
 $display("-----------------------------------------------------------------");
+
+/////////////////////////// zero flag
+dut.IR  = 0;
+dut.GPR[0] = 0;
+dut.GPR[1] = 0; 
+dut.`imm_mode = 0;
+dut.`rsrc1 = 0;//gpr[0]
+dut.`rsrc2 = 1;//gpr[1]
+dut.`oper_type = 2;
+dut.`rdst = 2;
+#10;
+$display("OP:Zero Sign Flag: %1b Zero Flag: %1b Carry Flag: %1b Overflow Flag: %1b Rsrc1:%0d  Rsrc2:%0d Rdst:%0d",dut.sign, dut.zero, dut.carry, dut.overflow, dut.GPR[0], dut.GPR[1], dut.GPR[2] );
+$display("-----------------------------------------------------------------");
+ 
+//////////////////////////sign flag
+dut.IR = 0;
+dut.GPR[0] = 16'h8000; /////1000_0000_0000_0000
+dut.GPR[1] = 0; 
+dut.`imm_mode = 0;
+dut.`rsrc1 = 0;//gpr[0]
+dut.`rsrc2 = 1;//gpr[1]
+dut.`oper_type = 2;
+dut.`rdst = 2;
+#10;
+$display("OP:Sign Sign Flag: %1b Zero Flag: %1b Carry Flag: %1b Overflow Flag: %1b Rsrc1:%0d  Rsrc2:%0d Rdst:%0d",dut.sign, dut.zero, dut.carry, dut.overflow, dut.GPR[0], dut.GPR[1], dut.GPR[2] );
+$display("-----------------------------------------------------------------");
+ 
+////////////////////////carry flag
+dut.IR = 0;
+dut.GPR[0] = 16'h8000; /////1000_0000_0000_0000   <0
+dut.GPR[1] = 16'h8002; /////1000_0000_0000_0010   <0
+dut.`imm_mode = 0;
+dut.`rsrc1 = 0;//gpr[0]
+dut.`rsrc2 = 1;//gpr[1]
+dut.`oper_type = 2;
+dut.`rdst = 2;    //////// 0000_0000_0000_0010  >0
+#10;
+ 
+$display("OP:Carry & Overflow Sign Flag: %1b Zero Flag: %1b Carry Flag: %1b Overflow Flag: %1b Rsrc1:%0d  Rsrc2:%0d Rdst:%0d",dut.sign, dut.zero, dut.carry, dut.overflow, dut.GPR[0], dut.GPR[1], dut.GPR[2] );
+$display("-----------------------------------------------------------------");
  
  
 end

@@ -1,5 +1,5 @@
 Analysis & Elaboration report for top
-Wed Apr 24 12:33:47 2024
+Wed Apr 24 14:18:27 2024
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                                   ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status      ; Successful - Wed Apr 24 12:33:47 2024       ;
+; Analysis & Elaboration Status      ; Successful - Wed Apr 24 14:18:27 2024       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; top                                         ;
 ; Top-level Entity Name              ; top                                         ;
@@ -163,7 +163,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
-    Info: Processing started: Wed Apr 24 12:33:36 2024
+    Info: Processing started: Wed Apr 24 14:18:16 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off top -c top --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -177,14 +177,19 @@ Warning (10236): Verilog HDL Implicit Net warning at tb.v(38): created implicit 
 Warning (10236): Verilog HDL Implicit Net warning at tb.v(38): created implicit net for "dout" File: D:/Udemy_Processor_Course/verilog_code/tb.v Line: 38
 Info (12127): Elaborating entity "top" for the top level hierarchy
 Warning (10858): Verilog HDL warning at top.v(41): object IR used but never assigned File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 41
+Warning (10036): Verilog HDL or VHDL warning at top.v(176): object "sign" assigned a value but never read File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 176
+Warning (10036): Verilog HDL or VHDL warning at top.v(176): object "zero" assigned a value but never read File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 176
+Warning (10036): Verilog HDL or VHDL warning at top.v(176): object "overflow" assigned a value but never read File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 176
+Warning (10036): Verilog HDL or VHDL warning at top.v(176): object "carry" assigned a value but never read File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 176
 Warning (10270): Verilog HDL Case Statement warning at top.v(57): incomplete case statement has no default case item File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 57
 Warning (10240): Verilog HDL Always Construct warning at top.v(57): inferring latch(es) for variable "mul_res", which holds its previous value in one or more paths through the always construct File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 57
 Warning (10240): Verilog HDL Always Construct warning at top.v(57): inferring latch(es) for variable "SGPR", which holds its previous value in one or more paths through the always construct File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 57
+Warning (10240): Verilog HDL Always Construct warning at top.v(183): inferring latch(es) for variable "temp_sum", which holds its previous value in one or more paths through the always construct File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 183
 Warning (10034): Output port "dout" at top.v(34) has no driver File: D:/Udemy_Processor_Course/verilog_code/top.v Line: 34
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 4709 megabytes
-    Info: Processing ended: Wed Apr 24 12:33:47 2024
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 15 warnings
+    Info: Peak virtual memory: 4708 megabytes
+    Info: Processing ended: Wed Apr 24 14:18:27 2024
     Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:13
+    Info: Total CPU time (on all processors): 00:00:11
 
 
