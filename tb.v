@@ -135,7 +135,7 @@ dut.`isrc = 56;
 $display("OP:ANDI Rdst:%8b  Rsrc1:%8b imm_d :%8b",dut.GPR[4],dut.GPR[7],dut.`isrc );
 $display("-----------------------------------------------------------------");
  
-///////////////////logical or imm
+///////////////////logical xor imm
 dut.IR = 0;
 dut.`imm_mode = 1;
 dut.`oper_type = 7;
@@ -144,6 +144,38 @@ dut.`rsrc1 = 7;//gpr[7]
 dut.`isrc = 56;
 #10;
 $display("OP:XORI Rdst:%8b  Rsrc1:%8b imm_d :%8b",dut.GPR[4],dut.GPR[7],dut.`isrc );
+$display("-----------------------------------------------------------------");
+
+////////////register or op
+dut.IR = 0;
+dut.`imm_mode = 0;
+dut.`oper_type = 5;
+dut.`rsrc1 = 4;
+dut.`rsrc2 = 16;
+dut.`rdst  = 0;
+#10;
+$display("OP:OR Rsrc1:%8b  Rsrc2:%8b Rdst:%8b",dut.GPR[4], dut.GPR[16], dut.GPR[0] );
+$display("-----------------------------------------------------------------");
+
+////////////register nor op
+dut.IR = 0;
+dut.`imm_mode = 0;
+dut.`oper_type = 10;
+dut.`rsrc1 = 4;
+dut.`rsrc2 = 16;
+dut.`rdst  = 0;
+#10;
+$display("OP:NOR Rsrc1:%16b  Rsrc2:%16b Rdst:%16b",dut.GPR[4], dut.GPR[16], dut.GPR[0] );
+$display("-----------------------------------------------------------------");
+
+////////////not op
+dut.IR = 0;
+dut.`imm_mode = 0;
+dut.`oper_type = 11;
+dut.`rsrc1 = 6;
+dut.`rdst  = 0;
+#10;
+$display("OP:NOT Rsrc1:%16b  Rdst:%16b",dut.GPR[6], dut.GPR[0] );
 $display("-----------------------------------------------------------------");
  
  
