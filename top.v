@@ -25,6 +25,13 @@
 `define rnand          5'b01001
 `define rnor           5'b01010
 `define rnot           5'b01011 
+
+/////////////////////// load & store instructions
+ 
+`define storereg       5'b01101   //////store content of register in data memory
+`define storedin       5'b01110   ////// store content of din bus in data memory
+`define senddout       5'b01111   /////send data from DM to dout bus
+`define sendreg        5'b10001   ////// send data from DM to register
  
  
 module top(
@@ -33,7 +40,9 @@ input [15:0] din,
 output reg [15:0] dout
 );
  
- 
+////////////////adding program and data memory
+reg [31:0] inst_mem [15:0]; ////program memory
+reg [15:0] data_mem [15:0]; ////data memory
  
  
  
@@ -52,10 +61,14 @@ reg [31:0] mul_res;
  
  
  
-always@(*)
+task decode_inst();
+
 begin
+
 case(`oper_type)
+
 ///////////////////////////////
+
 `movsgpr: begin
  
    GPR[`rdst] = SGPR;
@@ -63,6 +76,7 @@ case(`oper_type)
 end
  
 /////////////////////////////////
+
 `mov : begin
    if(`imm_mode)
         GPR[`rdst]  = `isrc;
@@ -166,8 +180,36 @@ end
  
 /////////////////////////////////////////////////////////////
 
-endcase
+`storedin: begin
+   data_mem[`isrc] = din;
 end
+ 
+/////////////////////////////////////////////////////////////
+ 
+`storereg: begin
+   data_mem[`isrc] = GPR[`rsrc1];
+end
+ 
+/////////////////////////////////////////////////////////////
+ 
+ 
+`senddout: begin
+   dout  = data_mem[`isrc]; 
+end
+ 
+/////////////////////////////////////////////////////////////
+ 
+`sendreg: begin
+  GPR[`rdst] =  data_mem[`isrc];
+end
+ 
+/////////////////////////////////////////////////////////////
+
+endcase
+
+end
+
+endtask
 
 
 
@@ -176,10 +218,13 @@ end
 reg sign = 0, zero = 0, overflow = 0, carry = 0;
 reg [16:0] temp_sum;
  
-always@(*)
+ 
+task decode_condflag();
+
 begin
  
 /////////////////sign bit
+
 if(`oper_type == `mul)
   sign = SGPR[15];
 else
@@ -205,6 +250,7 @@ if(`oper_type == `add)
     end
  
 ///////////////////// zero bit
+
 if(`oper_type == `mul)
   zero =  ~((|SGPR[15:0]) | (|GPR[`rdst]));
 else
@@ -233,6 +279,62 @@ if(`oper_type == `add)
      end
  
 end
+
+endtask
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////
+///////////reading program
+ 
+initial begin
+$readmemb("D:/Udemy_Processor_Course/verilog_code/inst_data.mem",inst_mem);
+end
+ 
+////////////////////////////////////////////////////
+//////////reading instructions one after another
+reg [2:0] count = 0;
+integer PC = 0;
+ 
+always@(posedge clk)
+begin
+  if(sys_rst)
+   begin
+     count <= 0;
+     PC    <= 0;
+   end
+   else 
+   begin
+     if(count < 4)
+     begin
+     count <= count + 1;
+     end
+     else
+     begin
+     count <= 0;
+     PC    <= PC + 1;
+     end
+ end
+end
+
+////////////////////////////////////////////////////
+/////////reading instructions 
+ 
+always@(*)
+begin
+if(sys_rst == 1'b1)
+IR = 0;
+else
+begin
+IR = inst_mem[PC];
+decode_inst();
+decode_condflag();
+end
+end
+ 
+////////////////////////////////////////////////////
+ 
+ 
 
 
 endmodule

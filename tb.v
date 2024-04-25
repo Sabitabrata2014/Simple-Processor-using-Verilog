@@ -28,6 +28,12 @@
 `define rnor           5'b01010
 `define rnot           5'b01011 
 
+/////////////////////// load & store instructions
+ 
+`define storereg       5'b01101   //////store content of register in data memory
+`define storedin       5'b01110   ////// store content of din bus in data memory
+`define senddout       5'b01111   /////send data from DM to dout bus
+`define sendreg        5'b10001   ////// send data from DM to register
 
 
 module tb;
@@ -35,7 +41,15 @@ module tb;
  
 integer i = 0;
 
+reg clk = 0,sys_rst = 0;
+
+reg [15:0] din = 0;
+
+wire [15:0] dout;
+
 top dut(clk, sys_rst, din, dout);
+
+/* 
  
 ///////////////updating value of all GPR to 2
 initial begin
@@ -219,6 +233,24 @@ $display("OP:Carry & Overflow Sign Flag: %1b Zero Flag: %1b Carry Flag: %1b Over
 $display("-----------------------------------------------------------------");
  
  
+end
+
+*/
+
+always #5 clk = ~clk;
+ 
+initial begin
+
+sys_rst = 1'b1;
+
+repeat(5) @(posedge clk);
+
+sys_rst = 1'b0;
+
+#800;
+
+$stop;
+
 end
  
 endmodule
